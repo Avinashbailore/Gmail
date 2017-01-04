@@ -44,7 +44,7 @@ app.post('/logindata',function(req,res){
 app.post('/signupData', function(req, res) 
 {
     var custData = req.body;
-    console.log(custData);
+    // console.log(custData);
     var user = new User({
     firstname: custData.fname,
     lastname: custData.lname,
@@ -111,9 +111,21 @@ app.post('/sendmsg',function(req,res){
         }
         
     });
-    // db.inboxData.insert(req.body,function(err,doc){
-    //     res.json(doc);
-    // });
+    db.inboxData.insert(req.body,function(err,doc){
+        res.json(doc);
+    });
+
+});
+
+app.post('/welcomemsg', function(req, res) 
+{
+    console.log("welcome msg");
+    console.log(req.body);
+    db.inboxData.insert(req.body,function(err,doc){
+        res.json(doc);
+    });
+    
+
 
 });
 
@@ -146,7 +158,6 @@ app.get('/mysentBox/:myEmails', function(req, res)
 app.get('/myMessage/:id', function(req, res) 
 {
     var id = req.params.id;
-    console.log(id);
     db.inboxData.findOne(
     {
         _id: mongojs.ObjectId(id)
@@ -159,6 +170,25 @@ app.get('/myMessage/:id', function(req, res)
         }
         res.json(docs);    
     });
+});
+
+app.get('/editedData/:id',function(req,res)
+{
+    var whitelist= ['count'];
+    var edit= req.params.id;
+    db.inboxData.findAndModify({
+        query: { _id: mongojs.ObjectId(edit) },
+        update: { $inc: { count: 1 } }
+    }, function(err, docs) 
+    {
+        if (err) 
+        {
+            console.log("error");
+            return next(err);
+        }
+        res.json(docs);    
+    });
+    
 });
 
 app.get('/mysentMessage/:id', function(req, res) 

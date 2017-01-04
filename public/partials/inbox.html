@@ -190,6 +190,10 @@ img
 .contain input
 {
 	    border: 8px solid #ddd;
+}
+
+tr.count-0 td {
+         background: #bbbbbb;
 
 }
 
@@ -198,15 +202,13 @@ img
 <div class="container">
 	<div class="leftBar">
 		<div  class="fly"><button id="compose"><a class="cmps" href="#/compose">Compose</a></button></div>
-		<div  class="fly"><button id="inbox"><a href="#/myinboxmsg">Inbox</a></button></div>
+		<div  class="fly"><button id="inbox"><a href="#/myinboxmsg">Inbox({{msgcount}})</a></button></div>
 		<div  class="fly"><button id="sent"><a href="#/mysentboxmsg">SentBox</a></button></div>
 	</div>
 	<div class="content">
-
 		<div id="ComposeEmail" ng-show="cmp">
 			<div class="form-bottom">                
-  				<form name="userForm" novalidate>
-				      
+  				<form name="userForm" novalidate>				      
 				      <div class="form-group" show-errors>
 				      <div class="try">
 				        <label class="control-label">Email</label>
@@ -218,27 +220,25 @@ img
 				        <input type="text" class="form-control" name="name" ng-model="compose.subject"  placeholder="Name" />
 				      </div>
 				      <div class="form-group">
-				        <label class="control-label">Email</label>
+				        <label class="control-label">Message</label>
 				        <textarea type="text" class="form-control" name="message" ng-model="compose.message"  placeholder="Enter your email here....." required></textarea >
 				      </div>
-				      <input type = "file" file-model = "compose.file"/>
-				      <button ng-click="sendEmail()">Send</button>
+				      <!-- <input type = "file" file-model = "compose.file"/> -->
+				      <!-- <input type="file" file-model="myFile"/>
+    				  <button ng-click="uploadFile()">upload me</button>
+ -->				      <button ng-click="sendEmail()">Send</button>
 				      
 		    </div>
 		</div>
-		<div id="inboxMails" ng-show="ins">
-			
-			<button id="refresh" ng-click="refreshData()">Refresh</button>
-			<div class="form-group" id="searches">
+		<div id="inboxMails" ng-show="ins" class= "contain">
+			<h1>Inbox</h1>
+			<!-- <button id="refresh" ng-click="refreshData()">Refresh</button> -->
+			<div class="form-group"  id="searches">
             	<label ></label>
             	<input type="text" ng-model="search" class="form-control" placeholder="Search">
         	</div>
 			<div class="myinboxTemp">
-				<!-- <p>from:{{x.senderEmail}}</p>				
-				<p>Subject:{{x.senderEmail}}</p>
-				<p>His Msg:{{x.message}}</p>
-				<p>yours:{{x.emailTo}}</p> -->
-				
+
 					<table class="table table-striped">
 					  <thead>
 					    <tr>
@@ -247,24 +247,20 @@ img
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr  dir-paginate="x in myinbox | itemsPerPage : 4 | filter:search">
+					    <tr  dir-paginate="x in myinbox | itemsPerPage : 4 | filter:search" class="count-{{ x.count }}">
 					      	<td scope="row" ng-click="myfunc($index,x._id)">{{x.senderEmail}}</td>
 					      	<td scope="row" ng-click="myfunc($index,x._id)">{{x.subject}}</td>
 					    </tr>
 					  </tbody>
 					</table>
+
 					<dir-pagination-controls
 					   template-url="partials/dirPagination.tpl.html"
 				       max-size="5"
 				       direction-links="true"
 				       boundary-links="true" >
 		    		</dir-pagination-controls>
-
-						
 			</div>
-			<!-- <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
-			    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
-			  </div> -->
 		</div>
 
 		<div id="sentEmails"  ng-show="sent">
@@ -272,7 +268,7 @@ img
 			<div class="myinboxTemp">
 					<h1>Sentbox</h1>
 					<div class="contain">
-					<div class="form-group">
+					<div class="form-group" >
 		            	<label ></label>
 		            	<input type="text" ng-model="search" class="form-control" placeholder="Search">
 		        	</div>
@@ -291,19 +287,15 @@ img
 					    </tr>
 					  </tbody>
 					</table>
-				<!-- <p>To:{{x.emailTo}}</p>				
-				<p>Subject:{{x.subject}}</p>
-				<p>His Msg:{{x.message}}</p>
-				<p>yours:{{x.senderEmail}}</p>	 -->			
-				
-				
 			</div>
 			<dir-pagination-controls
+				template-url="partials/dirPagination.tpl.html"
 		       max-size="5"
 		       direction-links="true"
 		       boundary-links="true" >
     		</dir-pagination-controls>
 		</div>
+
 		<div id="myemails" ng-show="myemails">
 			<button ng-click="backFunc()" id="back">Back</button>
 			<div id="mymsg">

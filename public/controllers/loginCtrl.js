@@ -1,6 +1,6 @@
 angular.module('myApp').controller('loginCtrl', function($scope,$http, $location, $sessionStorage) {
-   
-    
+   var welcome={'subject':'Welcome Message','senderFname':'Admin Team','senderEmail':'admin@admin.com','count':0,'message':'Welcome to  Gmail.You have been successfully registered to our mail.'};
+    $scope.welcome=welcome;
     $scope.loginSubmit = function(){
         console.log($scope.user);
         $http.post('/logindata',$scope.user).then(function(response){
@@ -56,9 +56,18 @@ angular.module('myApp').controller('loginCtrl', function($scope,$http, $location
 
             else
             {
+               $scope.welcome.emailTo = $scope.signup.email;
+            //     $scope.welcome.subject = "welcome Message";
+            //     $scope.welcome.message = "welcome Message";
+            //     $scope.welcome.email = "admin@admin.com";
+            //     $scope.welcome.count = 0;
+                console.log("need this");
+                console.log($scope.welcome);
+                $http.post('/welcomemsg',$scope.welcome).then(function(response){
+                });
                 $http.post('/signupData',$scope.signup).then(function(response){
                     console.log("data after inserting");
-                    console.log(response.data);
+                    // console.log(response.data);
                     $sessionStorage.fname=response.data.firstname;
                     $sessionStorage.lname=response.data.lastname;
                     $sessionStorage.senderEmail=response.data.email;

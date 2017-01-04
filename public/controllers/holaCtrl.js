@@ -1,5 +1,5 @@
 angular.module('myApp').controller('holaCtrl', function($scope,$http, $location, $sessionStorage) {
-   
+   $scope.msgcount= $sessionStorage.msgcount;
     var senderEmail=$sessionStorage.senderEmail;
     var fname = $sessionStorage.fname;
     var lname = $sessionStorage.lname;
@@ -9,12 +9,15 @@ angular.module('myApp').controller('holaCtrl', function($scope,$http, $location,
     $scope.myemails=true;
     console.log("hola sentbox");
         $scope.mymessageid= $sessionStorage.mymessageid;
-        console.log($scope.mymessageid);
         var id=$scope.mymessageid;
+        
+        // .then(function(response) {
+        //     // $location.path('addedCustomer');
+        // })
         $http.get('/myMessage/'+id).then(function(response){
-                console.log(response.data);
                 $scope.mymessage=response.data;
         });
+        $http.get('/editedData/'+id);
 
         $scope.backFunc = function(){
             console.log("from back func");

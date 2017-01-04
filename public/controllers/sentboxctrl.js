@@ -3,6 +3,7 @@ angular.module('myApp').controller('sentboxctrl', function($scope,$http, $locati
     $scope.sent=true;
     console.log("sentbox");
     var senderEmail=$sessionStorage.senderEmail;
+    $scope.msgcount= $sessionStorage.msgcount;
     var fname = $sessionStorage.fname;
     var lname = $sessionStorage.lname;
     var profileEmail=senderEmail;
@@ -19,16 +20,7 @@ angular.module('myApp').controller('sentboxctrl', function($scope,$http, $locati
             console.log(index);
             console.log(id);
             $sessionStorage.mymessage1id=id;
-            
-            // $http.get('/myMessage/'+id).then(function(response){
-            //     console.log(response.data);
-            //     // $scope.mymessage=response.data;
-            //     // console.log($scope.mymessage);
-            //     // $sessionStorage.mymessageid=$scope.mymessage;
-            // });
             $location.path('/hola1');
-            
-            // $location.path('#/');
         };
      
    
