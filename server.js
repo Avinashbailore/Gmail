@@ -83,9 +83,7 @@ app.get('/emailVerification', function(req, res, next)
 });
 
 
-app.post('/sendmsg',function(req,res){
-    console.log("indise server");
-    console.log(req.body);
+app.post('/sendmsg',function(req,res,next){
     var emailCheck = req.body.emailTo;
     console.log(emailCheck);
     db.loginData.findOne(
@@ -99,8 +97,10 @@ app.post('/sendmsg',function(req,res){
             return next(err);
         }
         if(docs==null)
-        {
+        {   
+
             res.json("noemail");
+            return next(err);
         }
         else
         {
@@ -110,9 +110,6 @@ app.post('/sendmsg',function(req,res){
             });
         }
         
-    });
-    db.inboxData.insert(req.body,function(err,doc){
-        res.json(doc);
     });
 
 });
@@ -132,7 +129,7 @@ app.post('/welcomemsg', function(req, res)
 app.get('/myInbox/:myEmail', function(req, res) 
 {
     var id = req.params.myEmail;
-    console.log(id);
+    // console.log(id);
     db.inboxData.find(
     {
         emailTo : id

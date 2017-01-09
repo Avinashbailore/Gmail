@@ -11,7 +11,6 @@ angular.module('myApp').controller('composeCtrl', function($scope,$http, $locati
     $scope.lname = lname;
     var profileEmail=senderEmail;
      $scope.sendEmail = function() {
-     	console.log("inside sebd");
         var sub = $scope.compose.subject;
         var msg = $scope.compose.message;
         $scope.compose.count=0;
@@ -36,9 +35,9 @@ angular.module('myApp').controller('composeCtrl', function($scope,$http, $locati
             {   $scope.compose.senderFname = $sessionStorage.fname;
                 $scope.compose.senderLname = $sessionStorage.lname;
                 $scope.compose.senderEmail = $sessionStorage.senderEmail;
-
+                // console.log("flag is zero");
                 // alert('sending data');
-                // console.log($scope.compose);
+                console.log($scope.compose);
                 $http.post('/sendmsg',$scope.compose) .then(function(response){
                     if(response.data=="noemail")
                     {
@@ -48,7 +47,7 @@ angular.module('myApp').controller('composeCtrl', function($scope,$http, $locati
                     else
                     {               
                         $http.get('/myInbox/' + senderEmail).then(function(response) {
-                        	alert("msg sent");
+                        	// alert("msg sent");
                         	$scope.myinbox=response.data;
                        	});
                      	$location.path('/myinboxmsg');
