@@ -11,12 +11,12 @@ angular.module('myApp').controller('composeCtrl', function($scope,$http, $locati
     $scope.lname = lname;
     var profileEmail=senderEmail;
      $scope.sendEmail = function() {
+     	console.log("inside sebd");
         var sub = $scope.compose.subject;
         var msg = $scope.compose.message;
-         $scope.compose.count=0;
+        $scope.compose.count=0;
         var flag=0;
-
-         if ($scope.userForm.$valid) 
+        if ($scope.userForm.$valid) 
         {       
             if(sub==null)
             {
@@ -46,11 +46,11 @@ angular.module('myApp').controller('composeCtrl', function($scope,$http, $locati
                         $scope.compose.emailTo='';
                     }
                     else
-                    {                
+                    {               
                         $http.get('/myInbox/' + senderEmail).then(function(response) {
+                        	alert("msg sent");
                         	$scope.myinbox=response.data;
-    
-                    	});
+                       	});
                      	$location.path('/myinboxmsg');
 
                     }

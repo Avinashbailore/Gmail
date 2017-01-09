@@ -7,7 +7,7 @@
             function($routeProvider){
                 $routeProvider
                    .when("/", {
-                        templateUrl: "partials/login.html",
+                         templateUrl: "partials/login.html",
                         controller: "loginCtrl"
                     })
                     .when("/authorizationsuccess", {
