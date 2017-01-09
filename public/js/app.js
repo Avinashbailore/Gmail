@@ -49,6 +49,13 @@
                         templateUrl: "partials/inbox.html",
                         controller: "sCtrl"
                     })
+                    .when("/Aboutus", {
+                        templateUrl: "partials/aboutus.html"
+                    })
+                    .when("/login", {
+                        templateUrl: "partials/login.html",
+                        controller: "loginCtrl"
+                    })
 
 
 
