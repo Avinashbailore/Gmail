@@ -41,11 +41,11 @@
                         templateUrl: "partials/inbox.html",
                         controller: "myemailsCtrl"
                     })
-                    .when("/hola", {
+                    .when("/openMsg", {
                         templateUrl: "partials/inbox.html",
-                        controller: "holaCtrl"
+                        controller: "openMsgCtrl"
                     })
-                    .when("/hola1", {
+                    .when("/openSentMsg", {
                         templateUrl: "partials/inbox.html",
                         controller: "sCtrl"
                     })
@@ -55,6 +55,10 @@
                     .when("/login", {
                         templateUrl: "partials/login.html",
                         controller: "loginCtrl"
+                    })
+                    .when("/forwardMsg", {
+                        templateUrl: "partials/inbox.html",
+                        controller: "forwardCtrl"
                     })
 
 

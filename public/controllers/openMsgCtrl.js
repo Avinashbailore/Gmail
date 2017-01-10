@@ -1,4 +1,4 @@
-angular.module('myApp').controller('holaCtrl', function($scope,$http, $location, $sessionStorage) {
+angular.module('myApp').controller('openMsgCtrl', function($scope,$http, $location, $sessionStorage) {
    $scope.msgcount= $sessionStorage.msgcount;
     var senderEmail=$sessionStorage.senderEmail;
     var fname = $sessionStorage.fname;
@@ -7,15 +7,13 @@ angular.module('myApp').controller('holaCtrl', function($scope,$http, $location,
     $scope.fname = fname;
     $scope.lname = lname;
     $scope.myemails=true;
-    console.log("hola sentbox");
+    console.log("open msg sentbox");
         $scope.mymessageid= $sessionStorage.mymessageid;
         var id=$scope.mymessageid;
-        
-        // .then(function(response) {
-        //     // $location.path('addedCustomer');
-        // })
         $http.get('/myMessage/'+id).then(function(response){
                 $scope.mymessage=response.data;
+                // console.log($scope.mymessage);
+                $sessionStorage.forwardMsg=$scope.mymessage;
         });
         $http.get('/editedData/'+id);
 
@@ -23,9 +21,5 @@ angular.module('myApp').controller('holaCtrl', function($scope,$http, $location,
             console.log("from back func");
             $location.path('/myinboxmsg');
         };
-     
-   
 
-
-    
 });

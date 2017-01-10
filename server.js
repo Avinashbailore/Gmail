@@ -19,8 +19,6 @@ var User = mongoose.model('User', schema, 'loginData');
 
 
 app.post('/logindata',function(req,res){
-	console.log("hai from server for login post");
-	console.log(req.body);
     var user = req.body;
     db.loginData.findOne(
     {
@@ -33,7 +31,6 @@ app.post('/logindata',function(req,res){
             console.log("error");
             return next(err);
         }
-        console.log(docs);
         res.json(docs);
     });
 });
@@ -44,7 +41,6 @@ app.post('/logindata',function(req,res){
 app.post('/signupData', function(req, res) 
 {
     var custData = req.body;
-    // console.log(custData);
     var user = new User({
     firstname: custData.fname,
     lastname: custData.lname,
@@ -85,7 +81,6 @@ app.get('/emailVerification', function(req, res, next)
 
 app.post('/sendmsg',function(req,res,next){
     var emailCheck = req.body.emailTo;
-    console.log(emailCheck);
     db.loginData.findOne(
     {
         email: req.body.emailTo
@@ -116,8 +111,6 @@ app.post('/sendmsg',function(req,res,next){
 
 app.post('/welcomemsg', function(req, res) 
 {
-    console.log("welcome msg");
-    console.log(req.body);
     db.inboxData.insert(req.body,function(err,doc){
         res.json(doc);
     });
@@ -129,7 +122,6 @@ app.post('/welcomemsg', function(req, res)
 app.get('/myInbox/:myEmail', function(req, res) 
 {
     var id = req.params.myEmail;
-    // console.log(id);
     db.inboxData.find(
     {
         emailTo : id
@@ -142,7 +134,6 @@ app.get('/myInbox/:myEmail', function(req, res)
 app.get('/mysentBox/:myEmails', function(req, res) 
 {
     var id = req.params.myEmails;
-    console.log(id);
     db.inboxData.find(
     {
         senderEmail : id
@@ -191,7 +182,6 @@ app.get('/editedData/:id',function(req,res)
 app.get('/mysentMessage/:id', function(req, res) 
 {
     var id = req.params.id;
-    console.log(id);
     db.inboxData.findOne(
     {
         _id: mongojs.ObjectId(id)
@@ -210,4 +200,4 @@ app.get('/mysentMessage/:id', function(req, res)
 
 
 console.log("server running");
-app.listen(8000);
+app.listen(3000);

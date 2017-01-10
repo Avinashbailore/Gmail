@@ -36,12 +36,12 @@ angular.module('myApp').controller('inboxCtrl', function($scope,$http, $location
 
         $scope.myfunc = function(index,id){
             $sessionStorage.mymessageid=id;
-            $location.path('/hola');
+            $location.path('/openMsg');
         };
 
         $scope.myfunc1 = function(index,id){
             $sessionStorage.mymessage1id=id;
-            $location.path('/hola');
+            $location.path('/openMsg');
         };
 
         $scope.showClient = function() {

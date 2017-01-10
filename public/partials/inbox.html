@@ -155,10 +155,11 @@ th
 {
 	float: left;
 	width: 500px;
-	height: 300px;
+	height: 250px;
 	border :2px solid #eeeeee;
 	padding: 10px;
 	margin-top: 10px;
+	margin-bottom: 20px;
 	    background-color: #eeeeee;
 }
 
@@ -168,11 +169,17 @@ a:link,a:active
 	color: white;
 }
 
-img
+#profileImg,#profileImg2
 {
 	background-color: #cccccc;
 	float: left;
 	margin-right: 10px;
+}
+
+#profileImg2
+{
+	margin-left: 10px;
+	margin-top: 5px;
 }
 
 #semail
@@ -206,6 +213,67 @@ tr.count-0 td {
     display: inline;
 }
 
+.reply
+{	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+	/*width: 50px;*/
+	/*height: 50px;*/
+	/*margin-top: 20px;
+	padding: 5px;
+	background-color: red;*/
+	clear: both;
+	/*margin-left: 5px;*/
+	border-top: 2px solid #cccccc;
+	text-align: left;
+	padding-top: 4px;
+
+}
+.clicks
+{	float: left;
+	width: 600px;
+	height: 80px;
+	margin-top: 5px;
+	margin-left: 10px;
+	/*border:1px solid blue;*/
+	     border: 1px solid #cfcfcf; 
+	     padding: 3px;
+
+	/*background-color: red;*/
+}
+
+#forwardMsg:hover
+{
+	text-decoration: none;
+}
+
+#forwardMsg
+{
+	text-decoration: none;
+	color: black;
+}
+
+.forwardBox
+{
+	height: 400px;
+	width: 700px;
+	/*background-color: red;*/
+	border:1px solid #cfcfcf;
+	margin-left: 20px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+.forwardContent
+{
+	margin: 5px;
+	padding : 5px;
+}
+
+#bold
+{
+	font-weight: bold;
+}
+
 </style>
 <h1>Welcome {{fname}}{{lname}}</h1>
 <div class="container">
@@ -232,11 +300,8 @@ tr.count-0 td {
 				        <label class="control-label">Message</label>
 				        <textarea type="text" class="form-control" name="message" ng-model="compose.message"  placeholder="Enter your email here....." required></textarea >
 				      </div>
-				      <!-- <input type = "file" file-model = "compose.file"/> -->
-				      <!-- <input type="file" file-model="myFile"/>
-    				  <button ng-click="uploadFile()">upload me</button>
- -->				      <button ng-click="sendEmail()">Send</button>
-				      
+				      <button ng-click="sendEmail()">Send</button>
+				</form>     
 		    </div>
 		</div>
 		<div id="inboxMails" ng-show="ins" class= "contain">
@@ -310,10 +375,39 @@ tr.count-0 td {
 			<div id="mymsg">
 				<div id="sub">Subject:{{mymessage.subject}}</div>
 				<div class="contain">
-					<img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
+					<img id="profileImg" src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
 					<div id="flname">{{mymessage.senderFname}} {{mymessage.senderLname}}<span id="semail"><{{mymessage.senderEmail}}></span></div>
 					<div id="msg">{{mymessage.message}}</div>
 				</div>
+				
+			</div>
+			<div class="reply">
+				<img id="profileImg2" src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
+				<div class="clicks">
+					<p>Click here to <a id="forwardMsg" href="#/forwardMsg">Forward</a><p>
+				</div>
+			</div>
+		</div>
+
+		<div id="forward" ng-show="forward">
+			<h1>hjsdgfkasgdfkhsdf</h1>
+			<div class="forwardBox">	
+				<form name="userForm" novalidate>				      
+				      <div class="form-group" show-errors>
+				      <div class="try">
+				        <input type="email" class="form-control" name="email" ng-model="forwardEmail" required placeholder="To"/>
+				       </div>
+				       <!-- {{forwardMsg}} -->
+				       <div class="forwardContent">
+				        	<p>---------- Forwarded message ----------</p>
+				        	<p>From: <span id="bold">{{forwardMsg.senderFname}} {{forwardMsg.senderLname}}</span> <{{forwardMsg.senderEmail}}></p>
+				        	<p>Subject: {{forwardMsg.subject}}</p>
+				        	<p>Message : {{forwardMsg.message}}</p>
+				        	<h2>Still working on this</h2>
+				        </div>
+				      </div>
+				      <button ng-click="sendForwardEmail()">Send</button>
+				</form>    
 			</div>
 		</div>
 
