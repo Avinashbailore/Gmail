@@ -6,11 +6,13 @@ angular.module('myApp').controller('sentboxctrl', function($scope,$http, $locati
     var fname = $sessionStorage.fname;
     var lname = $sessionStorage.lname;
     var profileEmail=senderEmail;
+    console.log(profileEmail);
     $scope.fname = fname;
     $scope.lname = lname;
 
     $http.get('/mysentBox/' + profileEmail).then(function(response) {
                 $scope.mysentbox=response.data;
+                console.log(response.data);
                 $scope.mysentbox.reverse();        
     });
 

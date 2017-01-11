@@ -196,7 +196,37 @@ app.get('/mysentMessage/:id', function(req, res)
     });
 });
 
+app.post('/sendForwardEmail',function(req,res,next){
+    console.log("inside sforward server");
+    console.log(req.body);
+    var emailCheck = req.body.emailTo;
+    db.loginData.findOne(
+    {
+        email: req.body.emailTo
+    }, function(err, docs) 
+    {
+        if (err) 
+        {
+            console.log("error");
+            return next(err);
+        }
+        if(docs==null)
+        {   
 
+            res.json("noemail");
+            return next(err);
+        }
+        else
+        {
+            console.log("unique");
+            db.inboxData.insert(req.body,function(err,doc)
+            {   console.log(doc);
+                res.json(doc);
+            });
+        }
+        
+    });
+});
 
 
 console.log("server running");

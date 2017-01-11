@@ -196,7 +196,7 @@ a:link,a:active
 
 .contain input
 {
-	    border: 8px solid #ddd;
+	    border: 3px solid #ddd;
 }
 
 tr.count-0 td {
@@ -243,13 +243,14 @@ tr.count-0 td {
 
 #forwardMsg:hover
 {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #forwardMsg
 {
 	text-decoration: none;
 	color: black;
+	text-decoration: underline;
 }
 
 .forwardBox
@@ -392,14 +393,14 @@ tr.count-0 td {
 		<div id="forward" ng-show="forward">
 			<h1>hjsdgfkasgdfkhsdf</h1>
 			<div class="forwardBox">	
-				<form name="userForm" novalidate>				      
+				<form>				      
 				      <div class="form-group" show-errors>
 				      <div class="try">
 				        <input type="email" class="form-control" name="email" ng-model="forwardEmail" required placeholder="To"/>
 				       </div>
 				       <!-- {{forwardMsg}} -->
 				       <div class="forwardContent">
-				        	<p>---------- Forwarded message ----------</p>
+				        	<p> Forwarded message </p>
 				        	<p>From: <span id="bold">{{forwardMsg.senderFname}} {{forwardMsg.senderLname}}</span> <{{forwardMsg.senderEmail}}></p>
 				        	<p>Subject: {{forwardMsg.subject}}</p>
 				        	<p>Message : {{forwardMsg.message}}</p>
@@ -407,7 +408,7 @@ tr.count-0 td {
 				        </div>
 				      </div>
 				      <button ng-click="sendForwardEmail()">Send</button>
-				</form>    
+				</form>     
 			</div>
 		</div>
 
@@ -416,9 +417,15 @@ tr.count-0 td {
 			<div id="mymsg">
 				<div id="sub">Subject:{{mysentmessages.subject}}</div>
 				<div class="contain">
-					<img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
+					<img id="profileImg" src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
 					<div id="flname">Email:{{mysentmessages.emailTo}}</div>
 					<div id="msg">{{mysentmessages.message}}</div>
+				</div>
+			</div>
+			<div class="reply">
+				<img id="profileImg2" src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png">
+				<div class="clicks">
+					<p>Click here to <a id="forwardMsg" href="#/forwardMsg">Forward</a><p>
 				</div>
 			</div>
 		</div>
