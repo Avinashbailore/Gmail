@@ -7,7 +7,6 @@ angular.module('myApp').controller('sCtrl', function($scope,$http, $location, $s
     $scope.fname = fname;
     $scope.lname = lname;
     $scope.mysentemails=true;
-    console.log("senbox msgs ctrl");
         $scope.mymessage1id= $sessionStorage.mymessage1id;
         var id=$scope.mymessage1id;
         $http.get('/mySentMessage/'+id).then(function(response){

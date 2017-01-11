@@ -7,12 +7,10 @@ angular.module('myApp').controller('openMsgCtrl', function($scope,$http, $locati
     $scope.fname = fname;
     $scope.lname = lname;
     $scope.myemails=true;
-    console.log("open msg sentbox");
         $scope.mymessageid= $sessionStorage.mymessageid;
         var id=$scope.mymessageid;
         $http.get('/myMessage/'+id).then(function(response){
                 $scope.mymessage=response.data;
-                // console.log($scope.mymessage);
                 $sessionStorage.forwardMsg=$scope.mymessage;
         });
         $http.get('/editedData/'+id);

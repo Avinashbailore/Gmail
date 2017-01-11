@@ -1,8 +1,5 @@
 var mongoose = require('mongoose');
 module.exports = new mongoose.Schema({
-
-
-	
 		firstname: {
 			type:String,
 			required:true,

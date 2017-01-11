@@ -1,12 +1,9 @@
 angular.module('myApp').controller('inboxCtrl', function($scope,$http, $location,$sessionStorage) {
-   
-    console.log("inboxctrl");
     var senderEmail=$sessionStorage.senderEmail;
     var fname = $sessionStorage.fname;
     var lname = $sessionStorage.lname;
     $scope.fname = fname;
     $scope.lname = lname;
-    $scope.message = "hai";
     $scope.ins=true;
     $scope.msgcount=0;
      $http.get('/myInbox/' + senderEmail).then(function(response) {
@@ -25,7 +22,6 @@ angular.module('myApp').controller('inboxCtrl', function($scope,$http, $location
 
 
         $scope.refreshData = function(){
-            console.log("inside refresh");
             $http.get('/myInbox/' + senderEmail).then(function(response) {
                 $scope.myinbox=response.data;
                 $scope.myinbox.reverse();
@@ -45,7 +41,6 @@ angular.module('myApp').controller('inboxCtrl', function($scope,$http, $location
         };
 
         $scope.showClient = function() {
-          console.log("from showclient");
           $location.path('#/');
         };
 
