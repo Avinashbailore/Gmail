@@ -4,19 +4,12 @@ var path = require('path');
 var mongojs = require('mongojs');
 var db = mongojs('loginData',['loginData','inboxData']);
 var bodyParser = require('body-parser');
-
-// app.get('/',function(req,res){
-// 	console.log("Hai there");
-// 	res.send("yoyo");
-// });
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 var mongoose = require('mongoose');
 var schema = require('./public/models/signupdata.js');
 mongoose.connect('mongodb://localhost:27017/loginData');
 var User = mongoose.model('User', schema, 'loginData');
-
-
 
 app.post('/logindata',function(req,res){
     var user = req.body;
@@ -114,8 +107,6 @@ app.post('/welcomemsg', function(req, res)
     db.inboxData.insert(req.body,function(err,doc){
         res.json(doc);
     });
-    
-
 
 });
 
@@ -218,9 +209,8 @@ app.post('/sendForwardEmail',function(req,res,next){
         }
         else
         {
-            console.log("unique");
             db.inboxData.insert(req.body,function(err,doc)
-            {   console.log(doc);
+            {   
                 res.json(doc);
             });
         }

@@ -1,0 +1,266 @@
+#bold
+{
+	font-weight: bold;
+}
+.fly
+	{	clear: left;
+		float: left;
+		margin-bottom: 10px;
+	}
+
+	.inbox
+	{	float: right;
+		width: 80%;
+		height: 400px;
+		border:3px solid blue;
+	}
+
+	.leftBar
+	{
+		float: left;
+		width: 30%;
+		height: 500px;
+		border:3px solid blue ;
+		margin: 0 auto;
+	}
+
+	.content
+	{
+		float: left;
+		width: 68%;
+		height: 500px;
+		border:3px solid blue ;
+	}
+
+	
+
+	.form-bottom input.ng-invalid.ng-touched,.form-bottom textarea.ng-invalid.ng-touched {
+    	background-color: #FA787E;
+  	}
+
+  	.forms-group input.ng-valid.ng-touched {
+   
+  }
+
+  
+
+.try input
+{
+	padding: 20px 20px;
+	    border: 3px solid #ddd;
+	    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+}
+
+
+.myinboxTemp
+{
+	clear: both;
+}
+
+#refresh
+{
+	float: left;
+	padding: 10px 15px 10px 15px;
+	margin-bottom: 20px;
+}
+
+#searches
+{
+	clear: both;
+}
+
+td:hover
+{
+	cursor: pointer;
+}
+
+
+#myemails
+{
+	
+}
+#mymsg
+{
+	
+	clear: both;
+	margin-left: 3px;
+}
+
+#back
+{
+	clear: both;
+	float: left;
+	margin-bottom: 5px;
+	
+}
+
+#sub
+{
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 2px solid #cccccc;
+	width: 100%;
+
+}
+
+#sub,#flname,#msg
+{
+	text-align: left;
+	font-size: 20px;
+	
+}
+th
+{
+	text-align: center;
+}
+
+.contain
+{
+	padding: 10px;
+}
+
+#compose
+{
+	 background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: white;font-size: 20px;
+    display: inline-block;
+}
+
+#compose:hover
+{
+	text-decoration: none;
+}
+.cmps
+{
+	color: white;text-align: center;
+    text-decoration: none;
+
+}
+#inbox:hover,#sent:hover
+{
+	text-decoration: none;
+}
+#inbox,#sent
+{
+	text-decoration: none;
+	font-size: 20px;
+	padding: 5px 5px;
+}
+
+#msg
+{
+	float: left;
+	width: 500px;
+	height: 250px;
+	border :2px solid #eeeeee;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	    background-color: #eeeeee;
+}
+
+a:link,a:active
+{
+	text-decoration: none;
+	color: white;
+}
+
+#profileImg,#profileImg2
+{
+	background-color: #cccccc;
+	float: left;
+	margin-right: 10px;
+}
+
+#profileImg2
+{
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+#semail
+{
+	font-size: 14px;
+	margin-left: 3px;
+}
+
+#back
+{
+	width: 50px;
+	height: 30px;
+}
+
+.contain input
+{
+	    border: 3px solid #ddd;
+}
+
+tr.count-0 td {
+         background: #bbbbbb;
+
+}
+
+
+
+.reply
+{	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+	/*width: 50px;*/
+	/*height: 50px;*/
+	/*margin-top: 20px;
+	padding: 5px;
+	background-color: red;*/
+	clear: both;
+	/*margin-left: 5px;*/
+	border-top: 2px solid #cccccc;
+	text-align: left;
+	padding-top: 4px;
+
+}
+.clicks
+{	float: left;
+	width: 600px;
+	height: 80px;
+	margin-top: 5px;
+	margin-left: 10px;
+	/*border:1px solid blue;*/
+	     border: 1px solid #cfcfcf; 
+	     padding: 3px;
+
+	/*background-color: red;*/
+}
+
+#forwardMsg:hover
+{
+	text-decoration: underline;
+}
+
+#forwardMsg
+{
+	text-decoration: none;
+	color: black;
+	text-decoration: underline;
+}
+
+.forwardBox
+{
+	height: 400px;
+	width: 700px;
+	/*background-color: red;*/
+	border:1px solid #cfcfcf;
+	margin-left: 20px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+.forwardContent
+{
+	margin: 5px;
+	padding : 5px;
+}
